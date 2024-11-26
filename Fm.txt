@@ -1,0 +1,27 @@
+fs=10000; 
+ac=1; 
+am=1; 
+fm=35; 
+fc=500; 
+b=10; 
+t=(0:0.1*fs)/fs; 
+wc=2*pi*fc; 
+wm=2*pi*fm; 
+mt=am*cos(wm*t); 
+subplot(4,1,1); 
+plot(t,mt); 
+title('modulating signal'); 
+ct=ac*cos(wc*t); 
+subplot(4,1,2); 
+plot(t,ct); 
+title('carrier signal'); 
+st=ac*cos((wc*t)+b*sin(wm*t)); 
+subplot(4,1,3); 
+plot(t,st); 
+title('modulated signal'); 
+d=demod(st,fc,fs,'fm'); 
+subplot(4,1,4); 
+plot(t,d); 
+title('demodulated signal');
+ 
+
